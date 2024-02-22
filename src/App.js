@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./App.scss";
+import BasicModal from './componnets/modalPopUp';
 
 function TimerPopup({ remainingTime }) {
   return (
@@ -15,6 +16,7 @@ function App() {
   const [timer, setTimer] = useState(60);
   const [congratulation, setCongratulation] = useState('');
   const [lossAmount, setLossAmount] = useState(0);
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,6 +36,14 @@ function App() {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (timer <= 5 ) {
+      return setOpen(true);
+    }
+    return setOpen(false);
+
+  }, [timer])
 
   const announceResults = (newResult) => {
     if (bet.amount > 0) {
@@ -72,26 +82,24 @@ function App() {
   return (
     <div>
       <div>Hello, welcome to our site, this is shubham singh, i would love to offer to you our game , i hope you are enjoying the game</div>
-      <h1 style={{marginTop: "20px"}}> Big or Small Betting Game {timer}</h1>
-      {timer <= 5 && timer > 0 && <TimerPopup remainingTime={timer} />}
-      <div>
+      <h1 style={{marginTop: "20px"}}> Timer {timer}</h1>
+      {timer <= 5 && timer > 0 && <BasicModal setOpen={setOpen} open={open} remainingTime={timer} />}
+      <div style={{margin: "0, 20px"}}>
         <button type="button" className="btn btn-warning" onClick={() => handleBet('big')} disabled={timer <= 5}>
-          Bet Big
+          Big
         </button>
         <button type="button" className="btn btn-info small" style={{marginLeft: "10px"}} onClick={() => handleBet('small')} disabled={timer <= 5}>
-          Bet Small
+          Small
         </button>
       </div>
       <div>
         {bet.amount > 0 && (
-          <div>
-            <p>Your current bet:</p>
-            <p>Option: {bet.option}</p>
-            <p>Amount: ${bet.amount}</p>
+          <div style={{marginTop: "10px"}}>
+            <p>Amount: ${bet.amount} {bet.option}</p>
           </div>
         )}
       </div>
-      <h2>Last Results</h2>
+      <h2 style={{marginTop: "20px"}}>Last Results</h2>
       <ul>
         {results.map((result, index) => (
           <li key={index}>{result}</li>
