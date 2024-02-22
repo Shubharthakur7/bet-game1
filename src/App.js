@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./App.scss";
 
 function TimerPopup({ remainingTime }) {
   return (
@@ -71,13 +72,13 @@ function App() {
   return (
     <div>
       <div>Hello, welcome to our site, this is shubham singh, i would love to offer to you our game , i hope you are enjoying the game</div>
-      <h1>Big or Small Betting Game {timer}</h1>
+      <h1 style={{marginTop: "20px"}}> Big or Small Betting Game {timer}</h1>
       {timer <= 5 && timer > 0 && <TimerPopup remainingTime={timer} />}
       <div>
-        <button onClick={() => handleBet('big')} disabled={timer <= 5}>
+        <button type="button" className="btn btn-warning" onClick={() => handleBet('big')} disabled={timer <= 5}>
           Bet Big
         </button>
-        <button onClick={() => handleBet('small')} disabled={timer <= 5}>
+        <button type="button" className="btn btn-info small" style={{marginLeft: "10px"}} onClick={() => handleBet('small')} disabled={timer <= 5}>
           Bet Small
         </button>
       </div>
