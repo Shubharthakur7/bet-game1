@@ -81,7 +81,7 @@ function App() {
 
   return (
     <div>
-      <div>Hello, welcome to our site, this is shubham singh, i would love to offer to you our game , i hope you are enjoying the game</div>
+      <div>Hello, welcome to our site, this is shubham singh, application development is in progress once completed we will let you know, thanks for visiting us</div>
       <h1 style={{marginTop: "20px"}}> Timer {timer}</h1>
       {timer <= 5 && timer > 0 && <BasicModal setOpen={setOpen} open={open} remainingTime={timer} />}
       <div style={{margin: "0, 20px"}}>
