@@ -30,7 +30,7 @@ export default function BasicModal({ remainingTime, open, setOpen }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h1" component="h2">
+          <Typography style={{textAlign: "center", maxWidth: "95vw"}} id="modal-modal-title" variant="h1" component="h2">
           {remainingTime}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
