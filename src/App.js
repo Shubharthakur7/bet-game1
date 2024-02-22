@@ -70,6 +70,7 @@ function App() {
 
   return (
     <div>
+      <div>Hello, welcome to our site, this is shubham singh, i would love to offer to you our game , i hope you are enjoying the game</div>
       <h1>Big or Small Betting Game {timer}</h1>
       {timer <= 5 && timer > 0 && <TimerPopup remainingTime={timer} />}
       <div>
